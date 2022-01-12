@@ -1,26 +1,49 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div>
+        <Header></Header>
+        <!-- v-bind:하위컴포넌트 속성명="상위 컴포넌트 전달할 데이터명"  -->
+        <Content v-bind:propsdata="nftProjectList"></Content>
+        <Footer></Footer>
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import axios from "axios";
+import Header from "./components/Header.vue";
+import Content from "./components/Content.vue";
+import Footer from "./components/Footer.vue";
+
+let url = "http://localhost:8000/dao/";  // 장고 drf 서버 주소
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+    data: () => {
+      return {
+        nftProjectList: []
+      };
+    },
+    components: {
+        Header,
+        Content,
+        Footer,
+    },
+    mounted() { // DOM 객체가 생성된 후 DRF server 에서 데이터를(nftProjectList) 가져와 저장
+      axios({
+        method: "GET",
+        url: url 
+      })
+        .then(response => {
+          this.nftProjectList = response.data;
+        })
+        .catch(response => {
+          console.log("Failed", response);
+        });
+    },
+    methods: {  // CRUD 로직 
+      getNftProjectList: function() {},
+      updateNftProjectList: function() {},
+      deleteNftProjectList: function() {},
+    },
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style></style>

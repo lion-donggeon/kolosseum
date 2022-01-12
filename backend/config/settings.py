@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'dao.apps.DaoConfig',
     #third party
     'rest_framework',
+    'corsheaders',
 
     #default
     'django.contrib.admin',
@@ -46,6 +47,10 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    #third party
+    'corsheaders.middleware.CorsMiddleware',  # django cors 사용
+
+    #default
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -54,6 +59,12 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:8080',  # vue의 포트 번호
+    'http://127.0.0.1:8080',
+)
 
 ROOT_URLCONF = 'config.urls'
 
