@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class NftProject(models.Model):
     name = models.CharField(max_length=200)
-    mainImage = models.ImageField(null=True, blank=True)
+    mainImage = models.ImageField(null=True, blank=True, upload_to="%Y/%m/%d/nftproject")
     twitterLink = models.URLField(null=True, blank=True)
     discordLink = models.URLField(null=True, blank=True)
     homepageLink = models.URLField(null=True, blank=True)

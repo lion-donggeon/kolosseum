@@ -6,6 +6,7 @@
         <ul>
             <li v-for="(data, index) in propsdata" v-bind:key="index">
                 {{data.name}}
+                / <img :src="data.mainImage" alt="">
             </li>
         </ul>
 
