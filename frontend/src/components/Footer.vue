@@ -1,5 +1,5 @@
 <template>
-    <footer>&copy;2022 kolosseum. All rights reseved</footer>
+    <footer>&copy;2022 Kolosseum. All rights reseved</footer>
 </template>
 
 <script>
