@@ -13,7 +13,7 @@ import Header from "./components/Header.vue";
 import Content from "./components/Content.vue";
 import Footer from "./components/Footer.vue";
 
-let url = "http://localhost:8000/dao/";  // 장고 drf 서버 주소
+let url = "http://15.165.73.177/dao/";  // 장고 drf 서버 주소
 
 export default {
     data: () => {
