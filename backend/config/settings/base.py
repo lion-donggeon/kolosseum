@@ -33,10 +33,14 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     #local
-    'dao.apps.DaoConfig',
+    'dao',
+    'product',
+
     #third party
     'rest_framework',
+    'rest_framework.authtoken',
     'corsheaders',
+    'djoser',
 
     #default
     'django.contrib.admin',

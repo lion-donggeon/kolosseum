@@ -1,49 +1,88 @@
 <template>
-    <div>
-        <Header></Header>
-        <!-- v-bind:하위컴포넌트 속성명="상위 컴포넌트 전달할 데이터명"  -->
-        <Content v-bind:propsdata="nftProjectList"></Content>
-        <Footer></Footer>
+  <div id="wrapper">
+    <nav class="navbar is-dark">
+      <div class="navbar-brand">
+        <router-link to="/" class="navbar-item"><strong>Djackets</strong></router-link>
+
+        <a class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu" @click="showMobileMenu = !showMobileMenu">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div class="navbar-menu" id="navbar-menu" v-bind:class="{'is-active': showMobileMenu }">
+        <div class="navbar-start">
+          <div class="navbar-item">
+            <form method="get" action="/search">
+              <div class="field has-addons">
+                <div class="control">
+                  <input type="text" class="input" placeholder="What are you looking for?" name="query">
+                </div>
+
+                <div class="control">
+                  <button class="button is-success">
+                      <span class="icon">
+                      <i class="fas fa-search"></i>
+                      </span>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="navbar-end">
+          <router-link to="/summer" class="navbar-item">Summer</router-link>
+          <router-link to="/winter" class="navbar-item">Winter</router-link>
+
+          <div class="navbar-item">
+            <div class="buttons">
+              <template v-if="$store.state.isAuthenticated">
+                <router-link to="/my-account" class="button is-light">My account</router-link>
+              </template>
+
+              <template v-else>
+                <router-link to="/log-in" class="button is-light">Log in</router-link>
+              </template>
+
+              <router-link to="/cart" class="button is-success">
+                <span class="icon"><i class="fas fa-shopping-cart"></i></span>
+                <span>Cart ({{ cartTotalLength }})</span>
+              </router-link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="is-loading-bar has-text-centered" v-bind:class="{'is-loading': $store.state.isLoading }">
+      <div class="lds-dual-ring"></div>
     </div>
+
+    <section class="section">
+      <router-view/>
+    </section>
+
+    <footer class="footer">
+      <p class="has-text-centered">Copyright (c) 2021</p>
+    </footer>
+  </div>
 </template>
 
 <script>
-import axios from "axios";
-import Header from "./components/Header.vue";
-import Content from "./components/Content.vue";
-import Footer from "./components/Footer.vue";
-
-let url = "http://15.165.73.177/dao/";  // 장고 drf 서버 주소
-
 export default {
-    data: () => {
-      return {
-        nftProjectList: []
-      };
-    },
-    components: {
-        Header,
-        Content,
-        Footer,
-    },
-    mounted() { // DOM 객체가 생성된 후 DRF server 에서 데이터를(nftProjectList) 가져와 저장
-      axios({
-        method: "GET",
-        url: url 
-      })
-        .then(response => {
-          this.nftProjectList = response.data;
-        })
-        .catch(response => {
-          console.log("Failed", response);
-        });
-    },
-    methods: {  // CRUD 로직 
-      getNftProjectList: function() {},
-      updateNftProjectList: function() {},
-      deleteNftProjectList: function() {},
-    },
-};
+  data() {
+    return {
+      showMobileMenu: false,
+      cart: {
+        items: []
+      }
+    }
+  },
+}
 </script>
 
-<style></style>
+<style lang="scss">
+@import '../node_modules/bulma';
+</style>
