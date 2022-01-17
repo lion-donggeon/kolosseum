@@ -2,8 +2,8 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import axsio from 'axios'
+import axios from 'axios'
 
-axsio.defaults.baseURL = 'http://15.165.73.177' 
+axios.defaults.baseURL = 'http://15.165.73.177' 
 
-createApp(App).use(store).use(router, axsio).mount('#app')
+createApp(App).use(store).use(router, axios).mount('#app')
