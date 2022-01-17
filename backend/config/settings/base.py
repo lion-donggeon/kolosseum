@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-2ldl^ybdp$%jj4!hk^(8563ev*%0gb!q9@zm#u!_td&oyfv$jf
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -69,7 +69,6 @@ CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:8080',  # vue의 포트 번호
     'http://127.0.0.1:8080',
-    'http://15.165.73.177',
 )
 
 ROOT_URLCONF = 'config.urls'
