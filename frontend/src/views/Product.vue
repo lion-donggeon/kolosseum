@@ -54,17 +54,29 @@ export default {
             await axios
                 .get(`/api/v1/products/${category_slug}/${product_slug}`)
                 .then(response => {
-                    
                     this.product = response.data
-
-                    console.log(this.product)
 
                     document.title = this.product.name + ' | Djackets'
                 })
                 .catch(error => {
                     console.log(error)
                 })
+            
+            this.$store.commit('setIsLoading', false)
         },
+        addToCart() {
+            if (isNaN(this.quantity) || this.quantity < 1) {
+                this.quantity = 1
+            }
+
+            const item = {
+                product: this.product,
+                quantity: this.quantity
+            }
+
+            this.$store.commit('addToCart', item)
+
+        }
     }
 }
 </script>
