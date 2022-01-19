@@ -8,6 +8,6 @@ import axios from 'axios'
 //axios.defaults.baseURL = 'http://localhost:8000/' 
 
 //운영
-axios.defaults.baseURL = 'http://15.165.73.177/' 
+axios.defaults.baseURL = 'http://kolosseum.land/' 
 
 createApp(App).use(store).use(router, axios).mount('#app')
