@@ -40,9 +40,39 @@ class Product(models.Model):
     """
     로컬
     """
+    # def get_image(self):
+    #     if self.image:
+    #         return 'http://127.0.0.1:8000' + self.image.url
+    #     return ''
+    
+    # def get_thumbnail(self):
+    #     if self.thumbnail:
+    #         image = self.image.url.split('/')
+    #         thumbnai = self.thumbnail.url.split('/')
+            
+    #         if( image == thumbnai ):
+    #             return 'http://127.0.0.1:8000' + self.thumbnail.url
+    #         else:
+    #             self.thumbnail = self.make_thumbnail(self.image)
+    #             self.save()
+
+    #             return 'http://127.0.0.1:8000' + self.thumbnail.url
+            
+    #     else:
+    #         if self.image:
+    #             self.thumbnail = self.make_thumbnail(self.image)
+    #             self.save()
+
+    #             return 'http://127.0.0.1:8000' + self.thumbnail.url
+    #         else:
+    #             return ''
+
+    """
+    운영
+    """
     def get_image(self):
         if self.image:
-            return 'http://127.0.0.1:8000' + self.image.url
+            return 'http://15.165.73.177' + self.image.url
         return ''
     
     def get_thumbnail(self):
@@ -51,41 +81,20 @@ class Product(models.Model):
             thumbnai = self.thumbnail.url.split('/')
             
             if( image == thumbnai ):
-                return 'http://127.0.0.1:8000' + self.thumbnail.url
+                return 'http://15.165.73.177' + self.thumbnail.url
             else:
                 self.thumbnail = self.make_thumbnail(self.image)
                 self.save()
 
-                return 'http://127.0.0.1:8000' + self.thumbnail.url
-            
+                return 'http://15.165.73.177' + self.thumbnail.url
         else:
             if self.image:
                 self.thumbnail = self.make_thumbnail(self.image)
                 self.save()
 
-                return 'http://127.0.0.1:8000' + self.thumbnail.url
+                return 'http://15.165.73.177' + self.thumbnail.url
             else:
                 return ''
-
-    """
-    운영
-    """
-    # def get_image(self):
-    #     if self.image:
-    #         return 'http://15.165.73.177' + self.image.url
-    #     return ''
-    
-    # def get_thumbnail(self):
-    #     if self.thumbnail:
-    #         return 'http://15.165.73.177' + self.thumbnail.url
-    #     else:
-    #         if self.image:
-    #             self.thumbnail = self.make_thumbnail(self.image)
-    #             self.save()
-
-    #             return 'http://15.165.73.177' + self.thumbnail.url
-    #         else:
-    #             return ''
 
 
     """
