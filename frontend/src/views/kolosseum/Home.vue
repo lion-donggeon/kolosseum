@@ -3,7 +3,7 @@
     <section class="hero is-medium has-text-white mb-6">
         <div class="hero-body has-text-centered">
             <p class="title mb-6 is-size-1">
-                NFT Klaytn World
+                Klaytn NFT World
             </p>
             <p class="subtitle">
                 Kolosseum !
