@@ -60,7 +60,6 @@ class Product(models.Model):
     """
     운영
     """
-
     def get_image(self):
         if self.image:
             return 'http://15.165.73.177' + self.image.url

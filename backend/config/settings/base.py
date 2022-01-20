@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     #local
     'dao',
     'product',
+    'order',
 
     #third party
     'rest_framework',
