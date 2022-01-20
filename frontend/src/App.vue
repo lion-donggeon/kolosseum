@@ -33,8 +33,7 @@
         </div>
 
         <div class="navbar-end">
-          <router-link to="/summer" class="navbar-item">Summer</router-link>
-          <router-link to="/winter" class="navbar-item">Winter</router-link>
+          <router-link to="/nft" class="navbar-item">NFT</router-link>
 
           <div class="navbar-item">
             <div class="buttons">

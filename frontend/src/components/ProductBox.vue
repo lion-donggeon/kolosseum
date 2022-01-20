@@ -7,7 +7,7 @@
                 <img v-bind:src="product.get_thumbnail">
             </figure>
 
-            <h3 class="is-size-4">{{ product.name }}</h3>
+            <h3 class="is-size-4"><strong>{{ product.name }}</strong></h3>
             <p class="is-size-6 has-text-grey">${{ product.price }}</p>
 
             
