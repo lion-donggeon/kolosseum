@@ -3,7 +3,7 @@ export const defualtMeta = [
       vmid: 'description',
       name: 'description',
       content:
-        'Kolosseum 에서 Klaytn 기반의 다양한 NFT 프로젝트들을 만나보세요.',
+        'Klaytn 기반의 다양한 NFT 프로젝트들을 Kolosseum 에서 만나보세요',
     },
     {
       vmid: 'keywords',
