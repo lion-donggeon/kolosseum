@@ -71,8 +71,12 @@
 
 <script>
 import axios from 'axios'
+import { defualtMeta } from '@/utils/meta';
 
 export default {
+  metaInfo: {
+    meta: defualtMeta,
+  },
   data() {
     return {
       showMobileMenu: false,
