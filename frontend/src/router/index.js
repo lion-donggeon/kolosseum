@@ -2,9 +2,17 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import store from '../store'
 
+//Kolosseum
 import Home from '../views/kolosseum/Home.vue'
 
-import Product from '../views/Product.vue'
+import Product from '../views/kolosseum/Product.vue'
+
+
+//샘플
+import Sample_Home from '../views/Home.vue'
+
+import Sample_Product from '../views/Product.vue'
+
 import Category from '../views/Category.vue'
 import Search from '../views/Search.vue'
 import Cart from '../views/Cart.vue'
