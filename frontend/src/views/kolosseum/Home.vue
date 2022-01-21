@@ -23,7 +23,7 @@
 
 <script>
 import axios from 'axios'
-import ProductBox from '@/components/ProductBox'
+import ProductBox from '@/components/kolosseum/ProductBox'
 
 export default {
   name: 'Home',
@@ -49,6 +49,8 @@ export default {
         .get('/api/v1/latest-products/')
         .then(response => {
           this.latestProducts = response.data
+
+          console.log(this.latestProducts.length)
         })
         .catch(error => {
           console.log(error)

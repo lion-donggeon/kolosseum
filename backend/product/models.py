@@ -24,8 +24,8 @@ class Product(models.Model):
     slug = models.SlugField()
     description = models.TextField(blank=True, null=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
-    image = models.ImageField(upload_to='uploads/', blank=True, null=True)
-    thumbnail = models.ImageField(upload_to='uploads/', blank=True, null=True)
+    image = models.ImageField(upload_to='image/', blank=True, null=True)
+    thumbnail = models.ImageField(upload_to='thumbnail/', blank=True, null=True)
     date_added = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -47,9 +47,9 @@ class Product(models.Model):
     
     # def get_thumbnail(self):
     #     if self.thumbnail:
-    #         image = self.image.url.split('/')
-    #         thumbnai = self.thumbnail.url.split('/')
-            
+    #         image = self.image.url.split('/')[3]
+    #         thumbnai = self.thumbnail.url.split('/')[3]
+
     #         if( image == thumbnai ):
     #             return 'http://127.0.0.1:8000' + self.thumbnail.url
     #         else:
@@ -77,9 +77,9 @@ class Product(models.Model):
     
     def get_thumbnail(self):
         if self.thumbnail:
-            image = self.image.url.split('/')
-            thumbnai = self.thumbnail.url.split('/')
-            
+            image = self.image.url.split('/')[3]
+            thumbnai = self.thumbnail.url.split('/')[3]
+
             if( image == thumbnai ):
                 return 'http://15.165.73.177' + self.thumbnail.url
             else:
@@ -87,6 +87,7 @@ class Product(models.Model):
                 self.save()
 
                 return 'http://15.165.73.177' + self.thumbnail.url
+            
         else:
             if self.image:
                 self.thumbnail = self.make_thumbnail(self.image)
@@ -95,6 +96,7 @@ class Product(models.Model):
                 return 'http://15.165.73.177' + self.thumbnail.url
             else:
                 return ''
+    
 
 
     """
@@ -106,8 +108,10 @@ class Product(models.Model):
         img = img.convert('RGB')
         img.thumbnail(size)
 
+        name = image.name.split("/")[1]
+
         thumb_io = BytesIO()
         img.save(thumb_io, 'JPEG', quality=85)
-        thumbnail = File(thumb_io, name=image.name)
+        thumbnail = File(thumb_io, name=name)
 
         return thumbnail
